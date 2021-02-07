@@ -1,3 +1,18 @@
+# Kubernetes LEMP Stack is the original repo.
+# Has been deeply modified to adapt to deployment requierments:
+  - Keep Core
+  - Deleted all related to:
+    a) Certificate managment
+    b) Ingress managment
+    c) Database managment
+    d) GoogleCloud managment
+    
+  - Added:
+    a) ConfigMap with WP enviromnment settings
+    b) Kuberntes CronJob deploy
+    
+
+
 # Kubernetes LEMP Stack
 Kubernetes LEMP Stack is a distributed LEMP stack built on top of a Kubernetes cluster. It enables anyone to deploy multiple CMSs (currently WordPress) for any number of websites. We built it to be secure and very fast by default.
 
