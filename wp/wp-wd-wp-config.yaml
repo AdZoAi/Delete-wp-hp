@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: wp-fpm-sock-wp-config
-  namespace: wp-wd
+  namespace: default
 data:
   wp-config.php: |
     <?php
