@@ -5,13 +5,14 @@ metadata:
   namespace: wp-wd
   labels:
     app: wp-wd
+  annotations:
+    volume.beta.kubernetes.io/storage-class: px-sc-r3-cms
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 10Gi
-  storageClassName: slow
   selector:
     matchLabels:
       app: wp-wd
