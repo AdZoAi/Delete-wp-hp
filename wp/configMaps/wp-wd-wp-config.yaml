@@ -65,3 +65,39 @@ data:
      # bypass the object cache, useful for debugging
 #    define( 'WP_REDIS_DEBUG', false );
 #    define( 'WP_REDIS_DISABLED', false );
+
+
+
+
+/* DE WORD PRESS
+<?php
+define( 'DB_NAME', 'glzpdb');
+define( 'DB_USER', 'zpdbuser');
+define( 'DB_PASSWORD', 'qAMS*HS!T^3*fD^e80OKe4u3U6$3mp');
+define( 'DB_HOST', 'mariadb');
+define( 'DB_CHARSET', 'utf8');
+define( 'DB_COLLATE', '');
+
+define( 'AUTH_KEY',         '8fZA25lW3T2DXcJn&8K9ZstSwSyn14');
+define( 'SECURE_AUTH_KEY',  'jJTs17V9mm6z%WHI6Yt#!yf7LH2hgk');
+define( 'LOGGED_IN_KEY',    'h4xLT3EM!uTQfnW9W7*$P7!L8DG3uF');
+define( 'NONCE_KEY',        'aHITnvbGfL6%v9&4Y!gQvBAm!&E$P');
+define( 'AUTH_SALT',        'J9vUI5hGa071Rcy!1O*9sljC1^qw%*');
+define( 'SECURE_AUTH_SALT', '$r7vdb2@RVtfN4OJx8QNLG2l$0#ERe');
+define( 'LOGGED_IN_SALT',   '^M1I5sDQFsYKl2EpsmOh&mxODPX5$F');
+define( 'NONCE_SALT',       'ctp3BPHgZHotM77Ie#Sk5l&2JWjRq1');
+
+$table_prefix = 'ytast_';
+
+define( 'WP_DEBUG', false );
+
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+	$_SERVER['HTTPS'] = 'on';
+}
+
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+}
+
+require_once( ABSPATH . 'wp-settings.php' );
+
