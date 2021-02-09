@@ -50,12 +50,9 @@ data:
               fastcgi_cache WORDPRESS;
               fastcgi_cache_valid  60m;
               
-    } 
+    }
+    
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-02-09T00:00:50Z"
   name: nginx-conf-d
-  namespace: wp-wd
-  resourceVersion: "2987"
-  selfLink: /api/v1/namespaces/wp-wd/configmaps/nginx-conf-d
-  uid: 5ec65dd5-dc87-4d97-8e1b-87f6ce4b3191
+  namespace: default
