@@ -43,7 +43,7 @@ spec:
 #            secretKeyRef:
 #              key: mariadb-pass-wp-wd.txt
 #              name: mariadb-pass-wp-wd
-        image: daxio/wordpress-redis-sock:v1.0.0
+      - image: daxio/wordpress-redis-sock:v1.0.0
         imagePullPolicy: IfNotPresent
         name: wp
         resources: {}
