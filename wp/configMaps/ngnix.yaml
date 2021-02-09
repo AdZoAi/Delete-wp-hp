@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   fastcgi.conf: |2
-
+  
     fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
     fastcgi_param  QUERY_STRING       $query_string;
     fastcgi_param  REQUEST_METHOD     $request_method;
@@ -27,34 +27,9 @@ data:
 
     # PHP only, required if PHP was built with --enable-force-cgi-redirect
     fastcgi_param  REDIRECT_STATUS    200;
-  fastcgi.conf.default: |2
-
-    fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
-    fastcgi_param  QUERY_STRING       $query_string;
-    fastcgi_param  REQUEST_METHOD     $request_method;
-    fastcgi_param  CONTENT_TYPE       $content_type;
-    fastcgi_param  CONTENT_LENGTH     $content_length;
-
-    fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
-    fastcgi_param  REQUEST_URI        $request_uri;
-    fastcgi_param  DOCUMENT_URI       $document_uri;
-    fastcgi_param  DOCUMENT_ROOT      $document_root;
-    fastcgi_param  SERVER_PROTOCOL    $server_protocol;
-    fastcgi_param  REQUEST_SCHEME     $scheme;
-    fastcgi_param  HTTPS              $https if_not_empty;
-
-    fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
-    fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
-
-    fastcgi_param  REMOTE_ADDR        $remote_addr;
-    fastcgi_param  REMOTE_PORT        $remote_port;
-    fastcgi_param  SERVER_ADDR        $server_addr;
-    fastcgi_param  SERVER_PORT        $server_port;
-    fastcgi_param  SERVER_NAME        $server_name;
-
-    # PHP only, required if PHP was built with --enable-force-cgi-redirect
-    fastcgi_param  REDIRECT_STATUS    200;
+  
   fastcgi_params: |
+  
     fastcgi_param   QUERY_STRING            $query_string;
     fastcgi_param   REQUEST_METHOD          $request_method;
     fastcgi_param   CONTENT_TYPE            $content_type;
@@ -82,32 +57,7 @@ data:
 
     # PHP only, required if PHP was built with --enable-force-cgi-redirect
     fastcgi_param   REDIRECT_STATUS         200;
-  fastcgi_params.default: |2
 
-    fastcgi_param  QUERY_STRING       $query_string;
-    fastcgi_param  REQUEST_METHOD     $request_method;
-    fastcgi_param  CONTENT_TYPE       $content_type;
-    fastcgi_param  CONTENT_LENGTH     $content_length;
-
-    fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
-    fastcgi_param  REQUEST_URI        $request_uri;
-    fastcgi_param  DOCUMENT_URI       $document_uri;
-    fastcgi_param  DOCUMENT_ROOT      $document_root;
-    fastcgi_param  SERVER_PROTOCOL    $server_protocol;
-    fastcgi_param  REQUEST_SCHEME     $scheme;
-    fastcgi_param  HTTPS              $https if_not_empty;
-
-    fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
-    fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
-
-    fastcgi_param  REMOTE_ADDR        $remote_addr;
-    fastcgi_param  REMOTE_PORT        $remote_port;
-    fastcgi_param  SERVER_ADDR        $server_addr;
-    fastcgi_param  SERVER_PORT        $server_port;
-    fastcgi_param  SERVER_NAME        $server_name;
-
-    # PHP only, required if PHP was built with --enable-force-cgi-redirect
-    fastcgi_param  REDIRECT_STATUS    200;
   koi-utf: |2
 
     # This map is not a full koi8-r <> utf8 map: it does not contain
@@ -218,6 +168,7 @@ data:
         FE  D0A7 ;   # capital CH
         FF  D0AA ;   # capital hard sign
     }
+    
   koi-win: |2
 
     charset_map  koi8-r  windows-1251 {
@@ -322,6 +273,7 @@ data:
         FE  D7 ; # capital CH
         FF  DA ; # capital hard sign
     }
+    
   mime.types: |2
 
     types {
@@ -412,196 +364,102 @@ data:
         video/x-ms-wmv                        wmv;
         video/x-msvideo                       avi;
     }
-  mime.types.default: |2
-
-    types {
-        text/html                             html htm shtml;
-        text/css                              css;
-        text/xml                              xml;
-        image/gif                             gif;
-        image/jpeg                            jpeg jpg;
-        application/javascript                js;
-        application/atom+xml                  atom;
-        application/rss+xml                   rss;
-
-        text/mathml                           mml;
-        text/plain                            txt;
-        text/vnd.sun.j2me.app-descriptor      jad;
-        text/vnd.wap.wml                      wml;
-        text/x-component                      htc;
-
-        image/png                             png;
-        image/tiff                            tif tiff;
-        image/vnd.wap.wbmp                    wbmp;
-        image/x-icon                          ico;
-        image/x-jng                           jng;
-        image/x-ms-bmp                        bmp;
-        image/svg+xml                         svg svgz;
-        image/webp                            webp;
-
-        application/font-woff                 woff;
-        application/java-archive              jar war ear;
-        application/json                      json;
-        application/mac-binhex40              hqx;
-        application/msword                    doc;
-        application/pdf                       pdf;
-        application/postscript                ps eps ai;
-        application/rtf                       rtf;
-        application/vnd.apple.mpegurl         m3u8;
-        application/vnd.ms-excel              xls;
-        application/vnd.ms-fontobject         eot;
-        application/vnd.ms-powerpoint         ppt;
-        application/vnd.wap.wmlc              wmlc;
-        application/vnd.google-earth.kml+xml  kml;
-        application/vnd.google-earth.kmz      kmz;
-        application/x-7z-compressed           7z;
-        application/x-cocoa                   cco;
-        application/x-java-archive-diff       jardiff;
-        application/x-java-jnlp-file          jnlp;
-        application/x-makeself                run;
-        application/x-perl                    pl pm;
-        application/x-pilot                   prc pdb;
-        application/x-rar-compressed          rar;
-        application/x-redhat-package-manager  rpm;
-        application/x-sea                     sea;
-        application/x-shockwave-flash         swf;
-        application/x-stuffit                 sit;
-        application/x-tcl                     tcl tk;
-        application/x-x509-ca-cert            der pem crt;
-        application/x-xpinstall               xpi;
-        application/xhtml+xml                 xhtml;
-        application/xspf+xml                  xspf;
-        application/zip                       zip;
-
-        application/octet-stream              bin exe dll;
-        application/octet-stream              deb;
-        application/octet-stream              dmg;
-        application/octet-stream              iso img;
-        application/octet-stream              msi msp msm;
-
-        application/vnd.openxmlformats-officedocument.wordprocessingml.document    docx;
-        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet          xlsx;
-        application/vnd.openxmlformats-officedocument.presentationml.presentation  pptx;
-
-        audio/midi                            mid midi kar;
-        audio/mpeg                            mp3;
-        audio/ogg                             ogg;
-        audio/x-m4a                           m4a;
-        audio/x-realaudio                     ra;
-
-        video/3gpp                            3gpp 3gp;
-        video/mp2t                            ts;
-        video/mp4                             mp4;
-        video/mpeg                            mpeg mpg;
-        video/quicktime                       mov;
-        video/webm                            webm;
-        video/x-flv                           flv;
-        video/x-m4v                           m4v;
-        video/x-mng                           mng;
-        video/x-ms-asf                        asx asf;
-        video/x-ms-wmv                        wmv;
-        video/x-msvideo                       avi;
-    }
+  
   modules: ""
-  naxsi_core.rules: "##################################\n## INTERNAL RULES IDS:1-999
-    \    ##\n##################################\n#@MainRule \"msg:weird request, unable
-    to parse\" id:1;\n#@MainRule \"msg:request too big, stored on disk and not parsed\"
-    id:2;\n#@MainRule \"msg:invalid hex encoding, null bytes\" id:10;\n#@MainRule
-    \"msg:unknown content-type\" id:11;\n#@MainRule \"msg:invalid formatted url\"
-    id:12;\n#@MainRule \"msg:invalid POST format\" id:13;\n#@MainRule \"msg:invalid
-    POST boundary\" id:14;\n#@MainRule \"msg:invalid JSON\" id:15;\n#@MainRule \"msg:empty
-    POST\" id:16;\n#@MainRule \"msg:libinjection_sql\" id:17;\n#@MainRule \"msg:libinjection_xss\"
-    id:18;\n\n##################################\n## SQL Injections IDs:1000-1099
-    ##\n##################################\nMainRule \"rx:select|union|update|delete|insert|table|from|ascii|hex|unhex|drop\"
-    \"msg:sql keywords\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\" \"s:$SQL:4\" id:1000;\nMainRule
-    \"str:\\\"\" \"msg:double quote\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\" \"s:$SQL:8,$XSS:8\"
-    id:1001;\nMainRule \"str:0x\" \"msg:0x, possible hex encoding\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:2\" id:1002;\n## Hardcore rules\nMainRule \"str:/*\" \"msg:mysql comment
-    (/*)\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\" \"s:$SQL:8\" id:1003;\nMainRule
-    \"str:*/\" \"msg:mysql comment (*/)\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:8\" id:1004;\nMainRule \"str:|\" \"msg:mysql keyword (|)\"  \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:8\" id:1005;\nMainRule \"str:&&\" \"msg:mysql keyword (&&)\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:8\" id:1006;\n## end of hardcore rules\nMainRule \"str:--\" \"msg:mysql
-    comment (--)\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\" \"s:$SQL:4\" id:1007;\nMainRule
-    \"str:;\" \"msg:semicolon\" \"mz:BODY|URL|ARGS\" \"s:$SQL:4,$XSS:8\" id:1008;\nMainRule
-    \"str:=\" \"msg:equal sign in var, probable sql/xss\" \"mz:ARGS|BODY\" \"s:$SQL:2\"
-    id:1009;\nMainRule \"str:(\" \"msg:open parenthesis, probable sql/xss\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:4,$XSS:8\" id:1010;\nMainRule \"str:)\" \"msg:close parenthesis, probable
-    sql/xss\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\" \"s:$SQL:4,$XSS:8\" id:1011;\nMainRule
-    \"str:'\" \"msg:simple quote\" \"mz:ARGS|BODY|URL|$HEADERS_VAR:Cookie\" \"s:$SQL:4,$XSS:8\"
-    id:1013;\nMainRule \"str:,\" \"msg:comma\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:4\" id:1015;\nMainRule \"str:#\" \"msg:mysql comment (#)\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:4\" id:1016;\nMainRule \"str:@@\" \"msg:double arobase (@@)\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$SQL:4\" id:1017;\n\n###############################\n## OBVIOUS RFI IDs:1100-1199
-    ##\n###############################\nMainRule \"str:http://\" \"msg:http:// scheme\"
-    \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\" \"s:$RFI:8\" id:1100;\nMainRule \"str:https://\"
-    \"msg:https:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\" \"s:$RFI:8\" id:1101;\nMainRule
-    \"str:ftp://\" \"msg:ftp:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\" \"s:$RFI:8\"
-    id:1102;\nMainRule \"str:php://\" \"msg:php:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1103;\nMainRule \"str:sftp://\" \"msg:sftp:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1104;\nMainRule \"str:zlib://\" \"msg:zlib:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1105;\nMainRule \"str:data://\" \"msg:data:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1106;\nMainRule \"str:glob://\" \"msg:glob:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1107;\nMainRule \"str:phar://\" \"msg:phar:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1108;\nMainRule \"str:file://\" \"msg:file:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1109;\nMainRule \"str:gopher://\" \"msg:gopher:// scheme\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$RFI:8\" id:1110;\n\n#######################################\n## Directory
-    traversal IDs:1200-1299 ##\n#######################################                                          \nMainRule
-    \"str:..\" \"msg:double dot\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\" \"s:$TRAVERSAL:4\"
-    id:1200;\nMainRule \"str:/etc/passwd\" \"msg:obvious probe\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$TRAVERSAL:4\" id:1202;\nMainRule \"str:c:\\\\\" \"msg:obvious windows path\"
-    \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\" \"s:$TRAVERSAL:4\" id:1203;\nMainRule
-    \"str:cmd.exe\" \"msg:obvious probe\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$TRAVERSAL:4\" id:1204;\nMainRule \"str:\\\\\" \"msg:backslash\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$TRAVERSAL:4\" id:1205;\n#MainRule \"str:/\" \"msg:slash in args\" \"mz:ARGS|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$TRAVERSAL:2\" id:1206;\n\n########################################\n## Cross
-    Site Scripting IDs:1300-1399 ##\n########################################\nMainRule
-    \"str:<\" \"msg:html open tag\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\" \"s:$XSS:8\"
-    id:1302;\nMainRule \"str:>\" \"msg:html close tag\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$XSS:8\" id:1303;\nMainRule \"str:[\" \"msg:open square backet ([), possible
-    js\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\" \"s:$XSS:4\" id:1310;\nMainRule
-    \"str:]\" \"msg:close square bracket (]), possible js\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$XSS:4\" id:1311;\nMainRule \"str:~\" \"msg:tilde (~) character\" \"mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie\"
-    \"s:$XSS:4\" id:1312;\nMainRule \"str:`\"  \"msg:grave accent (`)\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$XSS:8\" id:1314;\nMainRule \"rx:%[2|3].\"  \"msg:double encoding\" \"mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie\"
-    \"s:$XSS:8\" id:1315;\n\n####################################\n## Evading tricks
-    IDs: 1400-1500 ##\n####################################\nMainRule \"str:&#\" \"msg:utf7/8
-    encoding\" \"mz:ARGS|BODY|URL|$HEADERS_VAR:Cookie\" \"s:$EVADE:4\" id:1400;\nMainRule
-    \"str:%U\" \"msg:M$ encoding\" \"mz:ARGS|BODY|URL|$HEADERS_VAR:Cookie\" \"s:$EVADE:4\"
-    id:1401;\n\n#############################\n## File uploads: 1500-1600 ##\n#############################\nMainRule
-    \"rx:\\.ph|\\.asp|\\.ht\" \"msg:asp/php file upload\" \"mz:FILE_EXT\" \"s:$UPLOAD:8\"
-    id:1500;\n"
-  nginx.conf: "user  www-data;\nworker_processes  1;\n\nerror_log  /var/log/nginx/error.log
-    warn;\npid        /var/run/nginx.pid;\n\n\nevents {\n    worker_connections  1024;\n}\n\n\nhttp
-    {\n    include       /etc/nginx/mime.types;\n    include       /etc/nginx/naxsi_core.rules;\n
-    \   default_type  application/octet-stream;\n\n    index         index.php;\n\n
-    \   log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\"
-    '\n                      '$status $body_bytes_sent \"$http_referer\" '\n                      '\"$http_user_agent\"
-    \"$http_x_forwarded_for\"';\n\n    access_log  /var/log/nginx/access.log  main;\n\n
-    \   sendfile        on;\n    #tcp_nopush     on;\n\n    keepalive_timeout  65;\n\n
-    \   #gzip  on;\n\n    client_body_buffer_size 32k;\n    client_header_buffer_size
-    1k;\n    large_client_header_buffers 4 8k;\n    # php max upload limit cannot
-    be larger than this       \n    client_max_body_size 33m;\n\n    proxy_buffers
-    16 32k;\n    proxy_buffer_size 64k;\n\n    fastcgi_buffers 16 128k;\n    fastcgi_buffer_size
-    256k;\n\n    upstream php {\n        server unix:/sock/docker.sock;\n        #server
-    127.0.0.1:9000;\n    }\n\n    fastcgi_cache_path /var/run/nginx-cache levels=1:2
-    keys_zone=WORDPRESS:100m inactive=60m;\n    fastcgi_cache_key \"$scheme$request_method$host$request_uri\";\n
-    \   fastcgi_cache_use_stale error timeout invalid_header http_500;\n    fastcgi_ignore_headers
-    Cache-Control Expires Set-Cookie;\n\n    real_ip_header X-Forwarded-For;\n    set_real_ip_from
-    0.0.0.0/0;\n\n    limit_req_zone $binary_remote_addr zone=one:10m rate=16r/s;\n
-    \   limit_req_zone $binary_remote_addr zone=two:10m rate=30r/m;\n    limit_conn_zone
-    $binary_remote_addr zone=addr:10m;\n    limit_conn addr 10;\n    limit_conn_status
-    444;\n\n    include /etc/nginx-conf/conf.d/*.conf;\n}\n"
-  nginx.conf.default: |2
+  
+  naxsi_core.rules: |
+  
+    ##################################
+    ## INTERNAL RULES IDS:1-999     ##
+    ##################################
+    #@MainRule "msg:weird request, unable to parse" id:1;
+    #@MainRule "msg:request too big, stored on disk and not parsed" id:2;
+    #@MainRule "msg:invalid hex encoding, null bytes" id:10;
+    #@MainRule "msg:unknown content-type" id:11;
+    #@MainRule "msg:invalid formatted url" id:12;
+    #@MainRule "msg:invalid POST format" id:13;
+    #@MainRule "msg:invalid POST boundary" id:14;
+    #@MainRule "msg:invalid JSON" id:15;
+    #@MainRule "msg:empty POST" id:16;
+    #@MainRule "msg:libinjection_sql" id:17;
+    #@MainRule "msg:libinjection_xss" id:18;
 
-    #user  nobody;
+    ##################################
+    ## SQL Injections IDs:1000-1099 ##
+    ##################################
+    MainRule "rx:select|union|update|delete|insert|table|from|ascii|hex|unhex|drop" "msg:sql keywords" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:4" id:1000;
+    MainRule "str:\"" "msg:double quote" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:8,$XSS:8" id:1001;
+    MainRule "str:0x" "msg:0x, possible hex encoding" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:2" id:1002;
+    ## Hardcore rules
+    MainRule "str:/*" "msg:mysql comment (/*)" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:8" id:1003;
+    MainRule "str:*/" "msg:mysql comment (*/)" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:8" id:1004;
+    MainRule "str:|" "msg:mysql keyword (|)"  "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:8" id:1005;
+    MainRule "str:&&" "msg:mysql keyword (&&)" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:8" id:1006;
+    ## end of hardcore rules
+    MainRule "str:--" "msg:mysql comment (--)" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:4" id:1007;
+    MainRule "str:;" "msg:semicolon" "mz:BODY|URL|ARGS" "s:$SQL:4,$XSS:8" id:1008;
+    MainRule "str:=" "msg:equal sign in var, probable sql/xss" "mz:ARGS|BODY" "s:$SQL:2" id:1009;
+    MainRule "str:(" "msg:open parenthesis, probable sql/xss" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$SQL:4,$XSS:8" id:1010;
+    MainRule "str:)" "msg:close parenthesis, probable sql/xss" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$SQL:4,$XSS:8" id:1011;
+    MainRule "str:'" "msg:simple quote" "mz:ARGS|BODY|URL|$HEADERS_VAR:Cookie" "s:$SQL:4,$XSS:8" id:1013;
+    MainRule "str:," "msg:comma" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:4" id:1015;
+    MainRule "str:#" "msg:mysql comment (#)" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:4" id:1016;
+    MainRule "str:@@" "msg:double arobase (@@)" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$SQL:4" id:1017;
+
+    ###############################
+    ## OBVIOUS RFI IDs:1100-1199 ##
+    ###############################
+    MainRule "str:http://" "msg:http:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1100;
+    MainRule "str:https://" "msg:https:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1101;
+    MainRule "str:ftp://" "msg:ftp:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1102;
+    MainRule "str:php://" "msg:php:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1103;
+    MainRule "str:sftp://" "msg:sftp:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1104;
+    MainRule "str:zlib://" "msg:zlib:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1105;
+    MainRule "str:data://" "msg:data:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1106;
+    MainRule "str:glob://" "msg:glob:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1107;
+    MainRule "str:phar://" "msg:phar:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1108;
+    MainRule "str:file://" "msg:file:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1109;
+    MainRule "str:gopher://" "msg:gopher:// scheme" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$RFI:8" id:1110;
+
+    #######################################
+    ## Directory traversal IDs:1200-1299 ##
+    #######################################                                          
+    MainRule "str:.." "msg:double dot" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$TRAVERSAL:4" id:1200;
+    MainRule "str:/etc/passwd" "msg:obvious probe" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$TRAVERSAL:4" id:1202;
+    MainRule "str:c:\\" "msg:obvious windows path" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$TRAVERSAL:4" id:1203;
+    MainRule "str:cmd.exe" "msg:obvious probe" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$TRAVERSAL:4" id:1204;
+    MainRule "str:\\" "msg:backslash" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$TRAVERSAL:4" id:1205;
+    #MainRule "str:/" "msg:slash in args" "mz:ARGS|BODY|$HEADERS_VAR:Cookie" "s:$TRAVERSAL:2" id:1206;
+
+    ########################################
+    ## Cross Site Scripting IDs:1300-1399 ##
+    ########################################
+    MainRule "str:<" "msg:html open tag" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$XSS:8" id:1302;
+    MainRule "str:>" "msg:html close tag" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$XSS:8" id:1303;
+    MainRule "str:[" "msg:open square backet ([), possible js" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$XSS:4" id:1310;
+    MainRule "str:]" "msg:close square bracket (]), possible js" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$XSS:4" id:1311;
+    MainRule "str:~" "msg:tilde (~) character" "mz:BODY|URL|ARGS|$HEADERS_VAR:Cookie" "s:$XSS:4" id:1312;
+    MainRule "str:`"  "msg:grave accent (`)" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$XSS:8" id:1314;
+    MainRule "rx:%[2|3]."  "msg:double encoding" "mz:ARGS|URL|BODY|$HEADERS_VAR:Cookie" "s:$XSS:8" id:1315;
+
+    ####################################
+    ## Evading tricks IDs: 1400-1500 ##
+    ####################################
+    MainRule "str:&#" "msg:utf7/8 encoding" "mz:ARGS|BODY|URL|$HEADERS_VAR:Cookie" "s:$EVADE:4" id:1400;
+    MainRule "str:%U" "msg:M$ encoding" "mz:ARGS|BODY|URL|$HEADERS_VAR:Cookie" "s:$EVADE:4" id:1401;
+
+    #############################
+    ## File uploads: 1500-1600 ##
+    #############################
+    MainRule "rx:\.ph|\.asp|\.ht" "msg:asp/php file upload" "mz:FILE_EXT" "s:$UPLOAD:8" id:1500;
+
+  nginx.conf: |
+  
+    user  www-data;
     worker_processes  1;
 
-    #error_log  logs/error.log;
-    #error_log  logs/error.log  notice;
-    #error_log  logs/error.log  info;
-
-    #pid        logs/nginx.pid;
+    error_log  /var/log/nginx/error.log warn;
+    pid        /var/run/nginx.pid;
 
 
     events {
@@ -610,106 +468,59 @@ data:
 
 
     http {
-        include       mime.types;
+        include       /etc/nginx/mime.types;
+        include       /etc/nginx/naxsi_core.rules;
         default_type  application/octet-stream;
 
-        #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-        #                  '$status $body_bytes_sent "$http_referer" '
-        #                  '"$http_user_agent" "$http_x_forwarded_for"';
+        index         index.php;
 
-        #access_log  logs/access.log  main;
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" '
+                          '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log  /var/log/nginx/access.log  main;
 
         sendfile        on;
         #tcp_nopush     on;
 
-        #keepalive_timeout  0;
         keepalive_timeout  65;
 
         #gzip  on;
 
-        server {
-            listen       80;
-            server_name  localhost;
+        client_body_buffer_size 32k;
+        client_header_buffer_size 1k;
+        large_client_header_buffers 4 8k;
+        # php max upload limit cannot be larger than this       
+        client_max_body_size 33m;
 
-            #charset koi8-r;
+        proxy_buffers 16 32k;
+        proxy_buffer_size 64k;
 
-            #access_log  logs/host.access.log  main;
+        fastcgi_buffers 16 128k;
+        fastcgi_buffer_size 256k;
 
-            location / {
-                root   html;
-                index  index.html index.htm;
-            }
-
-            #error_page  404              /404.html;
-
-            # redirect server error pages to the static page /50x.html
-            #
-            error_page   500 502 503 504  /50x.html;
-            location = /50x.html {
-                root   html;
-            }
-
-            # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-            #
-            #location ~ \.php$ {
-            #    proxy_pass   http://127.0.0.1;
-            #}
-
-            # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-            #
-            #location ~ \.php$ {
-            #    root           html;
-            #    fastcgi_pass   127.0.0.1:9000;
-            #    fastcgi_index  index.php;
-            #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-            #    include        fastcgi_params;
-            #}
-
-            # deny access to .htaccess files, if Apache's document root
-            # concurs with nginx's one
-            #
-            #location ~ /\.ht {
-            #    deny  all;
-            #}
+        upstream php {
+            server unix:/sock/docker.sock;
+            #server 127.0.0.1:9000;
         }
 
+        fastcgi_cache_path /var/run/nginx-cache levels=1:2 keys_zone=WORDPRESS:100m inactive=60m;
+        fastcgi_cache_key "$scheme$request_method$host$request_uri";
+        fastcgi_cache_use_stale error timeout invalid_header http_500;
+        fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
 
-        # another virtual host using mix of IP-, name-, and port-based configuration
-        #
-        #server {
-        #    listen       8000;
-        #    listen       somename:8080;
-        #    server_name  somename  alias  another.alias;
+        real_ip_header X-Forwarded-For;
+        set_real_ip_from 0.0.0.0/0;
 
-        #    location / {
-        #        root   html;
-        #        index  index.html index.htm;
-        #    }
-        #}
+        limit_req_zone $binary_remote_addr zone=one:10m rate=16r/s;
+        limit_req_zone $binary_remote_addr zone=two:10m rate=30r/m;
+        limit_conn_zone $binary_remote_addr zone=addr:10m;
+        limit_conn addr 10;
+        limit_conn_status 444;
 
-
-        # HTTPS server
-        #
-        #server {
-        #    listen       443 ssl;
-        #    server_name  localhost;
-
-        #    ssl_certificate      cert.pem;
-        #    ssl_certificate_key  cert.key;
-
-        #    ssl_session_cache    shared:SSL:1m;
-        #    ssl_session_timeout  5m;
-
-        #    ssl_ciphers  HIGH:!aNULL:!MD5;
-        #    ssl_prefer_server_ciphers  on;
-
-        #    location / {
-        #        root   html;
-        #        index  index.html index.htm;
-        #    }
-        #}
-
+        include /etc/nginx-conf/conf.d/*.conf;
     }
+  
   scgi_params: |2
 
     scgi_param  REQUEST_METHOD     $request_method;
@@ -728,24 +539,7 @@ data:
     scgi_param  REMOTE_PORT        $remote_port;
     scgi_param  SERVER_PORT        $server_port;
     scgi_param  SERVER_NAME        $server_name;
-  scgi_params.default: |2
-
-    scgi_param  REQUEST_METHOD     $request_method;
-    scgi_param  REQUEST_URI        $request_uri;
-    scgi_param  QUERY_STRING       $query_string;
-    scgi_param  CONTENT_TYPE       $content_type;
-
-    scgi_param  DOCUMENT_URI       $document_uri;
-    scgi_param  DOCUMENT_ROOT      $document_root;
-    scgi_param  SCGI               1;
-    scgi_param  SERVER_PROTOCOL    $server_protocol;
-    scgi_param  REQUEST_SCHEME     $scheme;
-    scgi_param  HTTPS              $https if_not_empty;
-
-    scgi_param  REMOTE_ADDR        $remote_addr;
-    scgi_param  REMOTE_PORT        $remote_port;
-    scgi_param  SERVER_PORT        $server_port;
-    scgi_param  SERVER_NAME        $server_name;
+  
   uwsgi_params: |2
 
     uwsgi_param  QUERY_STRING       $query_string;
@@ -764,24 +558,7 @@ data:
     uwsgi_param  REMOTE_PORT        $remote_port;
     uwsgi_param  SERVER_PORT        $server_port;
     uwsgi_param  SERVER_NAME        $server_name;
-  uwsgi_params.default: |2
-
-    uwsgi_param  QUERY_STRING       $query_string;
-    uwsgi_param  REQUEST_METHOD     $request_method;
-    uwsgi_param  CONTENT_TYPE       $content_type;
-    uwsgi_param  CONTENT_LENGTH     $content_length;
-
-    uwsgi_param  REQUEST_URI        $request_uri;
-    uwsgi_param  PATH_INFO          $document_uri;
-    uwsgi_param  DOCUMENT_ROOT      $document_root;
-    uwsgi_param  SERVER_PROTOCOL    $server_protocol;
-    uwsgi_param  REQUEST_SCHEME     $scheme;
-    uwsgi_param  HTTPS              $https if_not_empty;
-
-    uwsgi_param  REMOTE_ADDR        $remote_addr;
-    uwsgi_param  REMOTE_PORT        $remote_port;
-    uwsgi_param  SERVER_PORT        $server_port;
-    uwsgi_param  SERVER_NAME        $server_name;
+  
   win-utf: |2
 
     # This map is not a full windows-1251 <> utf8 map: it does not
@@ -909,11 +686,8 @@ data:
         FE  D18E ;   # small yu
         FF  D18F ;   # small ya
     }
+    
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-02-08T23:45:26Z"
   name: nginx
-  namespace: wp-wd
-  resourceVersion: "972"
-  selfLink: /api/v1/namespaces/wp-wd/configmaps/nginx
-  uid: ec703f37-290a-497f-8195-f7f1d0716af3
+  namespace: default
