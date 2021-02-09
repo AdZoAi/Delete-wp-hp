@@ -29,26 +29,26 @@ data:
 
     $table_prefix = 'ytast_' ;
 
-#    if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-#      $_SERVER['HTTPS'] = 'on';
-#    }
+    if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+      $_SERVER['HTTPS'] = 'on';
+    }
 
-#    // WORDPRESS_CONFIG_EXTRA
-#    define('AUTOSAVE_INTERVAL', 86400);
-#    define('WP_POST_REVISIONS', false);
+    // WORDPRESS_CONFIG_EXTRA
+    define('AUTOSAVE_INTERVAL', 86400);
+    define('WP_POST_REVISIONS', false);
 
-#    if (!defined('ABSPATH')) {
-#      define('ABSPATH', dirname( __FILE__ ) . '/');
-#    }
+    if (!defined('ABSPATH')) {
+      define('ABSPATH', dirname( __FILE__ ) . '/');
+    }
 
-#    require_once(ABSPATH . 'wp-settings.php');
+    require_once(ABSPATH . 'wp-settings.php');
 
 
 
 
 
      /*  Esto es para conexion con Redis cluster para cache; ATENCION esto es dependiente de si nigix se conecto por TCP o por UNIX socket!! */
-     // Enable WP-Cache
+     # Enable WP-Cache
 #    define( 'WP_CACHE', true );
 #    define( 'WP_CACHE_KEY_SALT', 'kwSvxJ@nmPgme9$%@Ktlb0bpOI36LW' );
 #    define( 'WP_REDIS_PREFIX', 'ytast_' ); 
@@ -58,10 +58,10 @@ data:
 #    define( 'WP_REDIS_TIMEOUT', 1 );
 #    define( 'WP_REDIS_READ_TIMEOUT', 1 );
 #    define( 'WP_REDIS_DATABASE', 0 );
-    // automatically delete cache keys after 7 days
+     # automatically delete cache keys after 7 days
 #    define( 'WP_REDIS_MAXTTL', 60 * 60 * 24 * 7 );
-    // supported clients: `phpredis`, `credis`, `predis` and `hhvm`
+     # supported clients: `phpredis`, `credis`, `predis` and `hhvm`
 #    define( 'WP_REDIS_CLIENT', 'phpredis' );
-    // bypass the object cache, useful for debugging
+     # bypass the object cache, useful for debugging
 #    define( 'WP_REDIS_DEBUG', false );
 #    define( 'WP_REDIS_DISABLED', false );
