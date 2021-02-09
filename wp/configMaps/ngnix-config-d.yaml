@@ -49,6 +49,7 @@ data:
 
               fastcgi_cache WORDPRESS;
               fastcgi_cache_valid  60m;
+            }  
               
     }
     
