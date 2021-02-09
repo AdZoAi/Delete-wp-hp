@@ -22,6 +22,7 @@ data:
     <p><em>Faithfully yours, nginx.</em></p>
     </body>
     </html>
+  
   index.html: |
     <!DOCTYPE html>
     <html>
@@ -48,11 +49,8 @@ data:
     <p><em>Thank you for using nginx.</em></p>
     </body>
     </html>
+
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-02-09T00:16:17Z"
   name: nginx-html
-  namespace: wp-wd
-  resourceVersion: "4966"
-  selfLink: /api/v1/namespaces/wp-wd/configmaps/nginx-html
-  uid: 57367873-0312-424d-aa09-02a13e0c2705
+  namespace: default
