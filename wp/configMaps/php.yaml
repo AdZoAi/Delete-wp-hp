@@ -1,29 +1,29 @@
 apiVersion: v1
 data:
-  docker-php-ext-exif.ini: |
-    extension=exif.so
-  docker-php-ext-gd.ini: |
-    extension=gd.so
-  docker-php-ext-gettext.ini: |
-    extension=gettext.so
-  docker-php-ext-imagick.ini: |
-    extension=imagick.so
-  docker-php-ext-intl.ini: |
-    extension=intl.so
-  docker-php-ext-libsodium.ini: |
-    extension=libsodium.so
-  docker-php-ext-mcrypt.ini: |
-    extension=mcrypt.so
-  docker-php-ext-mysqli.ini: |
-    extension=mysqli.so
-  docker-php-ext-opcache.ini: |
-    zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20160303/opcache.so
-  docker-php-ext-redis.ini: |
-    extension=redis.so
-  docker-php-ext-sockets.ini: |
-    extension=sockets.so
-  docker-php-ext-zip.ini: |
-    extension=zip.so
+#  docker-php-ext-exif.ini: |
+#    extension=exif.so
+#  docker-php-ext-gd.ini: |
+#    extension=gd.so
+#  docker-php-ext-gettext.ini: |
+#    extension=gettext.so
+#  docker-php-ext-imagick.ini: |
+#    extension=imagick.so
+#  docker-php-ext-intl.ini: |
+#    extension=intl.so
+#  docker-php-ext-libsodium.ini: |
+#    extension=libsodium.so
+#  docker-php-ext-mcrypt.ini: |
+#    extension=mcrypt.so
+#  docker-php-ext-mysqli.ini: |
+#    extension=mysqli.so
+#  docker-php-ext-opcache.ini: |
+#    zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20160303/opcache.so
+#  docker-php-ext-redis.ini: |
+#    extension=redis.so
+#  docker-php-ext-sockets.ini: |
+#    extension=sockets.so
+#  docker-php-ext-zip.ini: |
+#    extension=zip.so
   nginx.ini: |
     file_uploads = On
     memory_limit = 256M
@@ -31,6 +31,13 @@ data:
     post_max_size = 1024M
     max_execution_time = 300
     max_input_vars = 3000
+  opcache.ini: |
+    opcache.memory_consumption=128
+    opcache.interned_strings_buffer=8
+    opcache.max_accelerated_files=4000
+    opcache.revalidate_freq=2
+    opcache.fast_shutdown=1
+    opcache.enable_cli=1   
   opcache-recommended.ini: |
     opcache.memory_consumption=128
     opcache.interned_strings_buffer=8
