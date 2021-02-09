@@ -41,4 +41,3 @@ data:
 kind: ConfigMap
 metadata:
   name: php
-  selfLink: /api/v1/namespaces/default/configmaps/php
