@@ -40,6 +40,5 @@ data:
     opcache.enable_cli=1
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: php
-  selfLink: /api/v1/namespaces/wp-wd/configmaps/php
+  selfLink: /api/v1/namespaces/default/configmaps/php
