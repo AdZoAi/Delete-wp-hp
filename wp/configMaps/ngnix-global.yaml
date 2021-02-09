@@ -6,6 +6,7 @@ data:
         root /etc/nginx-conf/html;
         internal;
     }
+  
   naxsi-wp-minimal-whitelist.rules.OFF: |
     #########                                                                 #########
     ######                                                                       ######
@@ -33,6 +34,7 @@ data:
     BasicRule  wl:1005 "mz:$URL_X:^/.*trackback$/|$BODY_VAR_X:^title$";
     BasicRule  wl:1101 "mz:$BODY_VAR:url";
     BasicRule  wl:1005 "mz:$BODY_VAR:title";
+  
   naxsi-wp-whitelist.rules: |
     # WordPress naxsi rules
 
@@ -202,6 +204,7 @@ data:
     # Yoast SEO
     BasicRule wl:1000 "mz:$URL:/wp-content/plugins/wordpress-seo/js/dist/select2/select2.full.min.js|URL";
     BasicRule wl:1000 "mz:$URL:/wp-content/plugins/wordpress-seo/css/dist/select2/select2.min.css|URL";
+  
   naxsi.rules: |
     #Enable naxsi
     SecRulesEnabled;
@@ -217,6 +220,7 @@ data:
     CheckRule "$XSS >= 8" BLOCK;
     #naxsi logs goes there
     #error_log /var/log/nginx/wpms-naxsi.https.log;
+  
   no-log-expires.conf: |
     location = /favicon.ico {
             log_not_found off;
@@ -232,19 +236,35 @@ data:
     location ~* ^.+\.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|rss|atom|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
             access_log off; log_not_found off; expires max;
     }
-  security.conf: "# Deny access to uploads that aren’t images, videos, music, etc.\nlocation
-    ~* ^/wp-content/uploads/.*.(html|htm|shtml|php|js|swf|mp4|webm)$ {\n    deny all;\n}\n\n#
-    Deny public access to wp-config.php and other files\nlocation ~* (wp-config.php|readme.html|license.txt)
-    {\n    deny all;\n}\n\nlocation ~ /\\. {\n    deny  all; access_log off; log_not_found
-    off; \n}\n\n# Deny access to wp-login.php\nlocation = /wp-login.php {\n    limit_req
-    zone=two burst=1 nodelay;\n    include fastcgi_params;\n    fastcgi_pass php;\n}\n\nadd_header
-    X-XSS-Protection \"1; mode=block\";\nadd_header X-Frame-Options \"SAMEORIGIN\";\n#add_header
-    X-Content-Type-Options nosniff;\nadd_header Referrer-Policy \"no-referrer-when-downgrade\";\n"
+  
+  security.conf: 
+    # Deny access to uploads that aren’t images, videos, music, etc.
+    location ~* ^/wp-content/uploads/.*.(html|htm|shtml|php|js|swf|mp4|webm)$ {
+        deny all;
+    }
+
+    # Deny public access to wp-config.php and other files
+    location ~* (wp-config.php|readme.html|license.txt) {
+        deny all;
+    }
+
+    location ~ /\. {
+        deny  all; access_log off; log_not_found off; 
+    }
+
+    # Deny access to wp-login.php
+    location = /wp-login.php {
+        limit_req zone=two burst=1 nodelay;
+        include fastcgi_params;
+        fastcgi_pass php;
+    }
+
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Frame-Options "SAMEORIGIN";
+    #add_header X-Content-Type-Options nosniff;
+    add_header Referrer-Policy "no-referrer-when-downgrade";
+    
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-02-09T00:14:17Z"
   name: nginx-global
-  namespace: wp-wd
-  resourceVersion: "4701"
-  selfLink: /api/v1/namespaces/wp-wd/configmaps/nginx-global
-  uid: df143096-3208-453a-a42e-019657ba0c31
+  namespace: default
