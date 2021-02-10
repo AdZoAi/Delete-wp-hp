@@ -59,10 +59,10 @@ spec:
         - mountPath: /sock
           name: php-socket
 # Mis configs
-        - name: wp-wd-wp-config
-          mountPath: /var/www/html/wp-config.php
-#          subPath: wp-config.php
-          readOnly: true
+        - mountPath: /var/www/html/wp-config.php
+          name: wp-wd-wp-config         
+          subPath: wp-config.php
+#          readOnly: true
       - image: daxio/nginx-naxsi:v1.1.4
         imagePullPolicy: IfNotPresent
         name: wp-nginx
