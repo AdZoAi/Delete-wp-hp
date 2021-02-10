@@ -6,98 +6,55 @@ metadata:
 data:
   wp-config.php: |
     <?php
-    define( 'DB_HOST', 'mariadb' );
-    define( 'DB_NAME', 'glzpdb' );
-    define( 'DB_USER', 'zpdbuser' );
-    define( 'DB_PASSWORD', 'qAMS*HS!T^3*fD^e80OKe4u3U6$3mp' );
-    define( 'TABLE_PREFIX', 'ytast_' );
-    define( 'LOGGED_IN_KEY', 'h4xLT3EM!uTQfnW9W7*$P7!L8DG3uF' );
-    define( 'LOGGED_IN_SALT', '^M1I5sDQFsYKl2EpsmOh&mxODPX5$F' );
-    define( 'NONCE_KEY', 'aHITnvbGfL6%v9&4Y!gQvBAm!&E$P' );
-    define( 'NONCE_SALT', 'ctp3BPHgZHotM77Ie#Sk5l&2JWjRq1' );
-    define( 'AUTH_KEY', '8fZA25lW3T2DXcJn&8K9ZstSwSyn14' );
-    define( 'SECURE_AUTH_KEY', 'jJTs17V9mm6z%WHI6Yt#!yf7LH2hgk' );
-    define( 'AUTH_SALT', 'J9vUI5hGa071Rcy!1O*9sljC1^qw%*' );
-    define( 'SECURE_AUTH_SALT', '$r7vdb2@RVtfN4OJx8QNLG2l$0#ERe' );
-    /* CronJob WP Disable -- Need Container Cron Job Deploy */
-    define('DISABLE_WP_CRON', true); 
+    define( 'DB_NAME', 'glzpdb');
+    define( 'DB_USER', 'zpdbuser');
+    define( 'DB_PASSWORD', 'qAMS*HS!T^3*fD^e80OKe4u3U6$3mp');
+    define( 'DB_HOST', 'mariadb');
+    define( 'DB_CHARSET', 'utf8');
+    define( 'DB_COLLATE', '');
 
-    /* General */
-    define('DB_CHARSET', 'utf8mb4');
-    define('DB_COLLATE', '');
-    define('WP_DEBUG', false);
 
-    $table_prefix = 'ytast_' ;
+    define( 'AUTH_KEY',         '8fZA25lW3T2DXcJn&8K9ZstSwSyn14');
+    define( 'SECURE_AUTH_KEY',  'jJTs17V9mm6z%WHI6Yt#!yf7LH2hgk');
+    define( 'LOGGED_IN_KEY',    'h4xLT3EM!uTQfnW9W7*$P7!L8DG3uF');
+    define( 'NONCE_KEY',        'aHITnvbGfL6%v9&4Y!gQvBAm!&E$P');
+    define( 'AUTH_SALT',        'J9vUI5hGa071Rcy!1O*9sljC1^qw%*');
+    define( 'SECURE_AUTH_SALT', '$r7vdb2@RVtfN4OJx8QNLG2l$0#ERe');
+    define( 'LOGGED_IN_SALT',   '^M1I5sDQFsYKl2EpsmOh&mxODPX5$F');
+    define( 'NONCE_SALT',       'ctp3BPHgZHotM77Ie#Sk5l&2JWjRq1');
+
+
+    define( 'WP_CACHE', true );
+    define( 'WP_CACHE_KEY_SALT', 'kwSvxJ@nmPgme9$%@Ktlb0bpOI36LW' );
+    define( 'WP_REDIS_PREFIX', 'ytast_' ); 
+    define( 'WP_REDIS_HOST', 'redis-cluster' );
+    define( 'WP_REDIS_PORT', 6379 );
+    define( 'WP_REDIS_PASSWORD', '%fw2GD89YO$fGL0gizpu7adRTSr0mU' );
+    define( 'WP_REDIS_TIMEOUT', 1 );
+    define( 'WP_REDIS_READ_TIMEOUT', 1 );
+    define( 'WP_REDIS_DATABASE', 0 );
+     # automatically delete cache keys after 7 days
+    define( 'WP_REDIS_MAXTTL', 60 * 60 * 24 * 7 );
+     # supported clients: `phpredis`, `credis`, `predis` and `hhvm`
+    define( 'WP_REDIS_CLIENT', 'phpredis' );
+     # bypass the object cache, useful for debugging
+    define( 'WP_REDIS_DEBUG', false );
+    define( 'WP_REDIS_DISABLED', false );
+
+
+    $table_prefix = 'ytast_';
+
+
+    define( 'WP_DEBUG', false );
+
 
     if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-      $_SERVER['HTTPS'] = 'on';
-    }
-
-    // WORDPRESS_CONFIG_EXTRA
-    define('AUTOSAVE_INTERVAL', 86400);
-    define('WP_POST_REVISIONS', false);
-
-    if (!defined('ABSPATH')) {
-      define('ABSPATH', dirname( __FILE__ ) . '/');
-    }
-
-    require_once(ABSPATH . 'wp-settings.php');
-
-
-
-
-
-     /*  Esto es para conexion con Redis cluster para cache; ATENCION esto es dependiente de si nigix se conecto por TCP o por UNIX socket!! */
-     # Enable WP-Cache
-#    define( 'WP_CACHE', true );
-#    define( 'WP_CACHE_KEY_SALT', 'kwSvxJ@nmPgme9$%@Ktlb0bpOI36LW' );
-#    define( 'WP_REDIS_PREFIX', 'ytast_' ); 
-#    define( 'WP_REDIS_HOST', 'redis-cluster' );
-#    define( 'WP_REDIS_PORT', 6379 );
-#    define( 'WP_REDIS_PASSWORD', '%fw2GD89YO$fGL0gizpu7adRTSr0mU' );
-#    define( 'WP_REDIS_TIMEOUT', 1 );
-#    define( 'WP_REDIS_READ_TIMEOUT', 1 );
-#    define( 'WP_REDIS_DATABASE', 0 );
-     # automatically delete cache keys after 7 days
-#    define( 'WP_REDIS_MAXTTL', 60 * 60 * 24 * 7 );
-     # supported clients: `phpredis`, `credis`, `predis` and `hhvm`
-#    define( 'WP_REDIS_CLIENT', 'phpredis' );
-     # bypass the object cache, useful for debugging
-#    define( 'WP_REDIS_DEBUG', false );
-#    define( 'WP_REDIS_DISABLED', false );
-
-
-
-
-/* DE WORD PRESS
-<?php
-define( 'DB_NAME', 'glzpdb');
-define( 'DB_USER', 'zpdbuser');
-define( 'DB_PASSWORD', 'qAMS*HS!T^3*fD^e80OKe4u3U6$3mp');
-define( 'DB_HOST', 'mariadb');
-define( 'DB_CHARSET', 'utf8');
-define( 'DB_COLLATE', '');
-
-define( 'AUTH_KEY',         '8fZA25lW3T2DXcJn&8K9ZstSwSyn14');
-define( 'SECURE_AUTH_KEY',  'jJTs17V9mm6z%WHI6Yt#!yf7LH2hgk');
-define( 'LOGGED_IN_KEY',    'h4xLT3EM!uTQfnW9W7*$P7!L8DG3uF');
-define( 'NONCE_KEY',        'aHITnvbGfL6%v9&4Y!gQvBAm!&E$P');
-define( 'AUTH_SALT',        'J9vUI5hGa071Rcy!1O*9sljC1^qw%*');
-define( 'SECURE_AUTH_SALT', '$r7vdb2@RVtfN4OJx8QNLG2l$0#ERe');
-define( 'LOGGED_IN_SALT',   '^M1I5sDQFsYKl2EpsmOh&mxODPX5$F');
-define( 'NONCE_SALT',       'ctp3BPHgZHotM77Ie#Sk5l&2JWjRq1');
-
-$table_prefix = 'ytast_';
-
-define( 'WP_DEBUG', false );
-
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
 	$_SERVER['HTTPS'] = 'on';
-}
+    }
 
-if ( ! defined( 'ABSPATH' ) ) {
+    if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
-}
+    }
 
-require_once( ABSPATH . 'wp-settings.php' );
 
+    require_once( ABSPATH . 'wp-settings.php' );
