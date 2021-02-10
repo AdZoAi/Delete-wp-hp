@@ -6,6 +6,21 @@ metadata:
 data:
   wp-config.php: |
     <?php
+    
+    define( 'WP_CACHE', true );
+    define( 'WP_CACHE_KEY_SALT', 'kwSvxJ@nmPgme9$%@Ktlb0bpOI36LW' );
+    define( 'WP_REDIS_PREFIX', 'ytast_' ); 
+    define( 'WP_REDIS_HOST', 'redis-cluster' );
+    define( 'WP_REDIS_PORT', 6379 );
+    define( 'WP_REDIS_PASSWORD', '%fw2GD89YO$fGL0gizpu7adRTSr0mU' );
+    define( 'WP_REDIS_TIMEOUT', 1 );
+    define( 'WP_REDIS_READ_TIMEOUT', 1 );
+    define( 'WP_REDIS_DATABASE', 0 );
+    define( 'WP_REDIS_MAXTTL', 60 * 60 * 24 * 7 );
+    define( 'WP_REDIS_CLIENT', 'phpredis' );
+    define( 'WP_REDIS_DEBUG', false );
+    define( 'WP_REDIS_DISABLED', false );
+    
     define( 'DB_NAME', 'glzpdb');
     define( 'DB_USER', 'zpdbuser');
     define( 'DB_PASSWORD', 'qAMS*HS!T^3*fD^e80OKe4u3U6$3mp');
@@ -22,21 +37,6 @@ data:
     define( 'SECURE_AUTH_SALT', '$r7vdb2@RVtfN4OJx8QNLG2l$0#ERe');
     define( 'LOGGED_IN_SALT',   '^M1I5sDQFsYKl2EpsmOh&mxODPX5$F');
     define( 'NONCE_SALT',       'ctp3BPHgZHotM77Ie#Sk5l&2JWjRq1');
-
-
-    define( 'WP_CACHE', true );
-    define( 'WP_CACHE_KEY_SALT', 'kwSvxJ@nmPgme9$%@Ktlb0bpOI36LW' );
-    define( 'WP_REDIS_PREFIX', 'ytast_' ); 
-    define( 'WP_REDIS_HOST', 'redis-cluster' );
-    define( 'WP_REDIS_PORT', 6379 );
-    define( 'WP_REDIS_PASSWORD', '%fw2GD89YO$fGL0gizpu7adRTSr0mU' );
-    define( 'WP_REDIS_TIMEOUT', 1 );
-    define( 'WP_REDIS_READ_TIMEOUT', 1 );
-    define( 'WP_REDIS_DATABASE', 0 );
-    define( 'WP_REDIS_MAXTTL', 60 * 60 * 24 * 7 );
-    define( 'WP_REDIS_CLIENT', 'phpredis' );
-    define( 'WP_REDIS_DEBUG', false );
-    define( 'WP_REDIS_DISABLED', false );
 
 
     $table_prefix = 'ytast_';
