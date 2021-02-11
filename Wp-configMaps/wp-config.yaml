@@ -10,7 +10,7 @@ data:
     define( 'WP_CACHE', true );
     define( 'WP_CACHE_KEY_SALT', 'kwSvxJ@nmPgme9$%@Ktlb0bpOI36LW' );
     define( 'WP_REDIS_PREFIX', 'ytast_' ); 
-    define( 'WP_REDIS_HOST', 'redis-cluster' );
+    define( 'WP_REDIS_HOST', 'redis' );
     define( 'WP_REDIS_PORT', 6379 );
     define( 'WP_REDIS_PASSWORD', '%fw2GD89YO$fGL0gizpu7adRTSr0mU' );
     define( 'WP_REDIS_TIMEOUT', 1 );
