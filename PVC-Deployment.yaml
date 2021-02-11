@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wp-wd-pv-claim
+  name: wp-fpm-pv-claim
   namespace: default
   labels:
-    app: wp-wd
+    app: wp-fpm
   annotations:
     volume.beta.kubernetes.io/storage-class: px-sc-r3-cms
 spec:
@@ -15,4 +15,4 @@ spec:
       storage: 10Gi
   selector:
     matchLabels:
-      app: wp-wd
+      app: wp-fpm

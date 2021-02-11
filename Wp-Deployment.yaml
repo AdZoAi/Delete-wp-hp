@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: wp-wd
+    app: wp-fpm
     tier: frontend
     track: stable
-  name: wp-wd
+  name: wp-fpm
   namespace: default
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: wp-wd
+      app: wp-fpm
       name: wp-nginx
       tier: frontend
       track: stable
@@ -25,7 +25,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: wp-wd
+        app: wp-fpm
         name: wp-nginx
         tier: frontend
         track: stable
@@ -37,12 +37,12 @@ spec:
 #        - name: WORDPRESS_DB_NAME
 #          value: dbWPWD
 #        - name: WORDPRESS_DB_USER
-#          value: wp-wd
+#          value: wp-fpm
 #        - name: WORDPRESS_DB_PASSWORD
 #          valueFrom:
 #            secretKeyRef:
-#              key: mariadb-pass-wp-wd.txt
-#              name: mariadb-pass-wp-wd
+#              key: mariadb-pass-wp-fpm.txt
+#              name: mariadb-pass-wp-fpm
       - image: daxio/wordpress-redis-sock:v1.0.0
         imagePullPolicy: IfNotPresent
         name: wp
@@ -60,7 +60,7 @@ spec:
           name: php-socket
 # Mis configs
         - mountPath: /var/www/html/wp-config.php
-          name: wp-wd-wp-config         
+          name: wp-fpm-config         
           subPath: wp-config.php
 #          readOnly: true
       - image: daxio/nginx-naxsi:v1.1.4
@@ -97,7 +97,7 @@ spec:
       volumes:
       - name: wp-persistent-storage
         persistentVolumeClaim:
-          claimName: wp-wd-pv-claim
+          claimName: wp-fpm-pv-claim
       - configMap:
           defaultMode: 420
           name: php
@@ -121,8 +121,8 @@ spec:
 # Mis configs
       - configMap:
           defaultMode: 420
-          name: wp-wd-wp-config
-        name: wp-wd-wp-config
+          name: wp-fpm-config
+        name: wp-fpm-config
       - emptyDir:
           medium: Memory
         name: cache
