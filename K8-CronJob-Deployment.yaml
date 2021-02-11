@@ -1,0 +1,34 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: wp-fpm-cronjob
+spec:
+  schedule: "0 */3 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          volumes:
+          - name: wp-fpm-config
+            configMap:
+              name: wp-fpm-config
+          containers:
+          - name: wp-cron
+            image: daxio/wordpress-redis:latest ###
+            imagePullPolicy : IfNotPresent      ###
+            command: ["/usr/local/bin/php"]
+            args:
+            - /usr/src/wordpress/wp-cron.php
+            volumeMounts:
+            - name: wp-fpm-config
+              mountPath: /usr/src/wordpress/wp-config.php
+              subPath: wp-config.php
+              readOnly: true
+            resources:
+              requests:
+                cpu: 10m
+                memory: 100Mi
+              limits:
+                memory: 100Mi
+          restartPolicy: OnFailure
