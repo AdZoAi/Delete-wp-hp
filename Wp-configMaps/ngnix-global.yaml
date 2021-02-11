@@ -237,7 +237,7 @@ data:
             access_log off; log_not_found off; expires max;
     }
   
-  security.conf: 
+  security.conf: |
     # Deny access to uploads that aren’t images, videos, music, etc.
     location ~* ^/wp-content/uploads/.*.(html|htm|shtml|php|js|swf|mp4|webm)$ {
         deny all;
