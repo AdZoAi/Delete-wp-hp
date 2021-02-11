@@ -15,8 +15,8 @@ spec:
               name: wp-fpm-config
           containers:
           - name: wp-cron
-            image: daxio/wordpress-redis:latest ###
-            imagePullPolicy : IfNotPresent      ###
+            image: daxio/wordpress-redis-sock:v1.0.0
+            imagePullPolicy : IfNotPresent      
             command: ["/usr/local/bin/php"]
             args:
             - /usr/src/wordpress/wp-cron.php
