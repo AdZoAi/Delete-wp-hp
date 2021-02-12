@@ -51,7 +51,7 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /var/www/html
-          name: wp-persistent-storage
+          name: wp-fpm-pv-claim
         - mountPath: /usr/local/etc/php/conf.d
           name: php
         - mountPath: /var/run/nginx-cache
@@ -75,7 +75,7 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /var/www/html
-          name: wp-persistent-storage
+          name: wp-fpm-pv-claim
         - mountPath: /etc/nginx
           name: nginx
         - mountPath: /etc/nginx-conf/conf.d
@@ -95,7 +95,7 @@ spec:
         fsGroup: 33
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: wp-persistent-storage
+      - name: wp-fpm-pv-claim
         persistentVolumeClaim:
           claimName: wp-fpm-pv-claim
       - configMap:
