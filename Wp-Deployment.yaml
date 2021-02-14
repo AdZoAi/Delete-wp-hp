@@ -9,7 +9,7 @@ metadata:
   name: wp-fpm
   namespace: default
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: wp-fpm
@@ -43,7 +43,7 @@ spec:
 #            secretKeyRef:
 #              key: mariadb-pass-wp-fpm.txt
 #              name: mariadb-pass-wp-fpm
-      - image: daxio/wordpress-redis-sock:v1.0.0
+      - image: daxio/wordpress-redis-sock:v1.1.0
         imagePullPolicy: IfNotPresent
         name: wp
         resources: {}
@@ -63,7 +63,7 @@ spec:
           name: wp-fpm-config         
           subPath: wp-config.php
 #          readOnly: true
-      - image: daxio/nginx-naxsi:v1.1.4
+      - image: daxio/nginx-naxsi:v1.2
         imagePullPolicy: IfNotPresent
         name: wp-nginx
         ports:
