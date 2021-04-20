@@ -1,41 +1,15 @@
 apiVersion: v1
 data:
   error-page.conf: |
+
     error_page 500 502 503 504 /50x.html;
     location = /50x.html {
         root /etc/nginx-conf/html;
         internal;
     }
-  
-  naxsi-wp-minimal-whitelist.rules.OFF: |
-    #########                                                                 #########
-    ######                                                                       ######
-    ### Because of wordpress.rules is full of wl rules even got double.             ###
-    ### Thats why I start from scratch so these rules are in BETA us on own risk.   ###
-    ### I us not that many plugins and those I use only after I checked there code. ###
-    ######                                                                       ######
-    #########                                                                 #########
-    ### HEADERS
-    BasicRule  wl:1001,1315 "mz:$HEADERS_VAR:cookie";
-    ### Theme customize
-    BasicRule  wl:1001,1015,1310,1311 "mz:$URL_X:^/.*$|$BODY_VAR_X:^customized$|BODY";
-    ### Widget customize
-    BasicRule  wl:1001,1015,1310,1311 "mz:$URL_X:^/.*$|$BODY_VAR_X:^partials$|BODY";
-    ### oEmbed API
-    BasicRule  wl:1000,1009,1101 "mz:$URL_X:^/.*wp-json/oembed/1.0/embed|$ARGS_VAR_X:^url$";
-    BasicRule  wl:1009,1101 "mz:$URL_X:^/.*wp-json/oembed/1.0/embed|ARGS";
-    BasicRule  wl:1009,1101 "mz:ARGS";
-    ### Trackbacks
-    BasicRule  wl:1005,1008,1010,1011,1015,1016,1100,1101,1400 "mz:$URL_X:^/.*trackback$/|BODY";
-    BasicRule  wl:1005,1008,1010,1011,1015,1016,1100,1101,1400 "mz:BODY";
-    BasicRule  wl:1008,1010,1011,1015,1016,1100,1101,1400 "mz:$URL_X:^/.*trackback$/|$BODY_VAR_X:^excerpt$";
-    BasicRule  wl:1008,1010,1011,1015,1016,1100,1101,1400 "mz:$BODY_VAR:excerpt";
-    BasicRule  wl:1101 "mz:$URL_X:^/.*trackback$/|$BODY_VAR_X:^url$";
-    BasicRule  wl:1005 "mz:$URL_X:^/.*trackback$/|$BODY_VAR_X:^title$";
-    BasicRule  wl:1101 "mz:$BODY_VAR:url";
-    BasicRule  wl:1005 "mz:$BODY_VAR:title";
-  
+    
   naxsi-wp-whitelist.rules: |
+
     # WordPress naxsi rules
 
     ### HEADERS
@@ -206,6 +180,7 @@ data:
     BasicRule wl:1000 "mz:$URL:/wp-content/plugins/wordpress-seo/css/dist/select2/select2.min.css|URL";
   
   naxsi.rules: |
+
     #Enable naxsi
     SecRulesEnabled;
     #Enable learning mode
@@ -222,6 +197,7 @@ data:
     #error_log /var/log/nginx/wpms-naxsi.https.log;
   
   no-log-expires.conf: |
+
     location = /favicon.ico {
             log_not_found off;
             access_log off;
@@ -238,6 +214,7 @@ data:
     }
   
   security.conf: |
+
     # Deny access to uploads that aren’t images, videos, music, etc.
     location ~* ^/wp-content/uploads/.*.(html|htm|shtml|php|js|swf|mp4|webm)$ {
         deny all;
