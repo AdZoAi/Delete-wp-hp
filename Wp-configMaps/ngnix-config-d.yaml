@@ -1,8 +1,9 @@
 apiVersion: v1
 data:
   wp-cache.conf: |
+
     server {
-            server_name _;
+            server_name zpot.co;
 
             root /var/www/html;
             include /etc/nginx-conf/global/*.conf;
@@ -49,10 +50,9 @@ data:
 
               fastcgi_cache WORDPRESS;
               fastcgi_cache_valid  60m;
-            }  
-              
+            } 
     }
-    
+              
 kind: ConfigMap
 metadata:
   name: nginx-conf-d
